@@ -1,0 +1,79 @@
+<script type="text/javascript" src="js/raphael.js"></script> 
+
+<html>
+<head>
+<script type="text/javascript">
+
+
+//public var paper = Raphael(100, 100, 500, 500);
+
+
+function Draw()
+{
+var Num1 =parseInt(document.getElementById('ak').value,10);
+var Num2 = parseInt(document.getElementById('ch').value,10);
+var Num3 = parseInt(document.getElementById('mh').value,10);
+var Num4 = parseInt(document.getElementById('di').value,10);
+
+var Total = Num1 + Num2 + Num3 + Num4 ;
+				
+ 
+//alert(Total);
+ var akp=100*Num1/Total;
+ var chp=100*Num2/Total;
+ var mhp=100*Num3/Total;
+ var diger=100-(akp+chp+mhp);
+
+
+var paper = Raphael(100, 100, 900, 900);
+paper.text(90, 175, "2011 Genel Seçim Sonuçlarý");
+ var a = paper.rect(0, 150-akp*1.5, 20, akp*1.5, 5);
+ var c = paper.rect(50, 150-chp*1.5, 20, chp*1.5, 5);
+ var m = paper.rect(100, 150-mhp*1.5, 20, mhp*1.5, 5);
+ var d = paper.rect(150, 150-diger*1.5, 20, diger*1.5, 5);
+ 
+ var ab = paper.rect(0, 0, 20, 150, 5);
+ var cb = paper.rect(50, 0, 20, 150, 5);
+ var mb = paper.rect(100, 0, 20, 150, 5);
+ var db = paper.rect(150, 0, 20, 150, 5);
+ ab.toBack();
+ cb.toBack();
+ mb.toBack();
+ db.toBack();
+ paper.text(10, 155, "AKP");
+ paper.text(60, 155, "CHP");
+ paper.text(110, 155, "MHP");
+ paper.text(160, 155, "DÝÐER");
+ 
+ paper.text(10, 165, akp.toFixed(2));
+ paper.text(60, 165, chp.toFixed(2));
+ paper.text(110, 165, mhp.toFixed(2));
+ paper.text(160, 165, diger.toFixed(2));
+ 
+ 
+ 
+a.animate({fill:"orange"}, 1000);
+c.animate({fill:"red"}, 1000);
+m.animate({fill:"green"}, 1000);
+d.animate({fill:"blue"}, 1000);
+ 
+
+}
+	
+
+</script>
+</head>
+
+<body>
+<form>
+<input type="button" value="Grafiklemeyi Göster" onclick="Draw()" style="position: absolute; left: 220px; top: 5px;" />
+<input id="ak" type="text" value="AKP" style="text-align: right; width:3em " /> 
+<input id="ch" type="text" value="CHP" style="text-align: right; width:3em" style="position: absolute; left: 100px; top: 150px;"/> 
+<input id="mh" type="text" value="MHP" style="text-align: right; width:3em" style="position: absolute; left: 100px; top: 110px;"/> 
+<input id="di" type="text" value="DÝÐER" style="text-align: right; width:6em" style="position: absolute; left: 100px; top: 200px;"/> 
+
+
+</form>
+
+</body>
+</html>
